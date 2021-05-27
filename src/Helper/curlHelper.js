@@ -8,5 +8,4 @@ module.exports.getSiteStatus = async (siteUrl) => {
             message : "Site is up"
         }
         return returnData;
-   
 }
