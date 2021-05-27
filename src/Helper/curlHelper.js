@@ -6,6 +6,7 @@ module.exports.getSiteStatus = async (siteUrl) => {
         const { statusCode, data, headers } = await curly.get(siteUrl);
         console.log(headers);
         returnData.statusCode = statusCode;
+        returnData.reason = (returnData.reason = headers[0].result.reason);
     } catch (e) {
         console.log(e.toString());
         returnData.error = e.toString();

@@ -8,13 +8,17 @@ module.exports.checkSiteStatus = async (request) => {
         responseData.errorMessage = siteStatus.error;
     }
     else if(siteStatus.statusCode) {
-        const statusCode =siteStatus.statusCode
+        
+        const statusCode =siteStatus.statusCode;
         responseData.statusCode = statusCode;
         if(statusCode === 200) {
-            responseData.message = `${siteUrl} is UP`;
+            responseData.message = `${siteUrl} is UP`;        
         }
         else {
             responseData.message = `${siteUrl} is DOWN`;
+        }
+        if(siteStatus.reason) {
+            responseData.reason = siteStatus.reason; 
         }
     }
     else {

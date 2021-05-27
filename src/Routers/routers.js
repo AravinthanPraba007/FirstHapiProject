@@ -12,10 +12,12 @@ exports.routes = [
             }
         },
         handler: (request, h) => {
-            // const data = siteStatusService.checkSiteStatus(request);
+            const data = siteStatusService.checkSiteStatus(request);
             // return h.response(data);
-            return siteStatusService.checkSiteStatus(request);
+            // return siteStatusService.checkSiteStatus(request);
             // return h.response(siteStatusService.checkSiteStatus(request));
+
+            return data;
         }
     }
 ];
