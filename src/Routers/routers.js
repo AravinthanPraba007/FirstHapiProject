@@ -4,7 +4,7 @@ exports.routes = [
         method: 'POST',
         path: '/siteStatus',
         handler: (request, h) => {
-            return h.response(siteStatusService(request));
+            return h.response(siteStatusService.checkSiteStatus(request));
         }
     }
 ];
