@@ -1,10 +1,11 @@
 {
-  "name": "FirstHapiProject",
+  "name": "first_hapi_project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/Server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node src/Server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/AravinthanPraba007/FirstHapiProject#readme",
   "dependencies": {
-    "hapi": "^18.1.0"
+    "@hapi/hapi": "^20.1.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/node": "^7.14.2",
+    "@babel/preset-env": "^7.14.2"
   }
 }
