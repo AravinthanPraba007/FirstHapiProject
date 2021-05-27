@@ -8,7 +8,7 @@ const init = async () => {
     });
 
     Routers.routes.forEach( (route) => {
-        console.log(`adding endpoint ${route.path}`);
+        console.log(`-> Adding Endpoint: ${route.path}`);
         server.route(route);
     })
 
