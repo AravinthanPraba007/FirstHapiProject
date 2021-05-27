@@ -1,15 +1,26 @@
 const curlHelper = require('../Helper/curlHelper');
 module.exports.checkSiteStatus = async (request) => {
+    const STATUS_503_MESSAGE = "Service Unavailable";
     const siteUrl = request.payload.siteUrl;
-    const response = {};
-    const data = curlHelper.getSiteStatus(siteUrl)
-    console.log("Data");
-    console.log(data);
-    response = {
-        URL: siteUrl,
-        Status_Code: 200,
-        Message: "hello"
-    };
-    console.log(response);
-    return response;
+    const responseData = {};
+    const siteStatus = await curlHelper.getSiteStatus(siteUrl)
+    if(siteStatus.error){
+        responseData.errorMessage = siteStatus.error;
+    }
+    else if(siteStatus.statusCode) {
+        const statusCode =siteStatus.statusCode
+        responseData.statusCode = statusCode;
+        if(statusCode === 200) {
+            responseData.message = `${siteUrl} is UP`;
+        }
+        else {
+            responseData.message = `${siteUrl} is DOWN`;
+        }
+    }
+    else {
+        responseData.message = "Unable to get the Site status";
+    }
+
+    
+    return responseData;
 }
