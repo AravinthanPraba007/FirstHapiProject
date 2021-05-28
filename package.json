@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/Server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "lab --assert code --coverage -l ",
+    "test1": "lab --assert code --coverage -l -r html -o test.html",
     "start": "babel-node src/Server/server.js"
   },
   "repository": {
@@ -27,6 +28,8 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
-    "@babel/preset-env": "^7.14.2"
+    "@babel/preset-env": "^7.14.2",
+    "code": "^5.2.4",
+    "lab": "^18.0.2"
   }
 }
