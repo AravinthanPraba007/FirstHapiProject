@@ -1,5 +1,6 @@
 const Hapi = require('@hapi/hapi');
-const Routers = require('../Routers/routers')
+const Routers = require('../Routers/routers');
+
 
 const init = async () => {
     const server = Hapi.server({
@@ -7,13 +8,27 @@ const init = async () => {
         host: 'localhost'
     });
 
-    Routers.routes.forEach( (route) => {
+    Routers.routes.forEach((route) => {
         console.log(`-> Adding Endpoint: ${route.path}`);
         server.route(route);
     })
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
+
+// https://github.com/jedireza/hapi-node-postgres/issues/29
+    // const plugin = {
+    //     register: require('hapi-node-postgres'),
+    //     options: {
+    //         connectionString: 'postgres://postgres:root@localhost:5432/school'
+    //     }
+    // };
+    // await server.register(plugin, (err) => {
+
+    //     if (err) {
+    //         console.error('Failed loading "hapi-postgres" plugin');
+    //     }
+    //  })
 
 };
 process.on('unhandledRejection', (err) => {
